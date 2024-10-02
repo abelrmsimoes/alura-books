@@ -2,42 +2,52 @@ import { useState } from "react";
 import styled from "styled-components";
 
 import Input from "../Input";
-
 import { books } from './searchData';
 
 const SearchContainer = styled.section`
-  background-image: linear-gradient(90deg, #002F52 35%, #326589 165%);
-  color: #FFF;
-  text-align: center;
-  padding: 85px 0;
-  height: 270px;
   width: 100%;
+  color: #FFF;
+  height: 470px;
+  padding: 85px 0;
+  text-align: center;
+  background-image: linear-gradient(90deg, #002F52 35%, #326589 165%);
 `
+
 const Title = styled.h2`
   color: #FFF;
+  width: 100%;
   font-size: 36px;
   text-align: center;
-  width: 100%;
 `
+
 const Subtitle = styled.h3`
   font-size: 16px;
   font-weight: 500;
   margin-bottom: 40px;
 `
-const ResultsContainer = styled.div`
+
+const Results = styled.div`
   display: flex;
-  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 20px;
   justify-content: center;
-  gap: 20px;
-  margin-top: 20px;
 `
+
 const BookItem = styled.div`
-  background: #FFF;
-  color: #000;
-  padding: 10px;
-  border-radius: 5px;
-  width: 150px;
+  color: #FFF;
+  padding: 2em;
   text-align: center;
+  
+  cursor: pointer;
+  
+  img {
+    width: 100px;
+  }
+  
+  &:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease-in-out;
+  }
 `
 
 export default function Search() {
@@ -56,18 +66,17 @@ export default function Search() {
           setSearch(result);
         }}
       />
-      <ResultsContainer>
+      <Results>
         {search.map(book => (
           <BookItem key={book.id}>
             <h4>{book.title}</h4>
             <img
               src={book.src}
               alt={book.title}
-              style={{ width: '100%' }}
             />
           </BookItem>
         ))}
-      </ResultsContainer>
+      </Results>
     </SearchContainer>
   );
 }

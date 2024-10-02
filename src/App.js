@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import Header from './components/Header';
+import NewReleases from './components/NewReleases';
 import Search from './components/Search';
 
 const AppContainer = styled.div`
@@ -14,6 +15,7 @@ export default function App() {
     <AppContainer>
       <Header />
       <Search />
+      <NewReleases />
     </AppContainer>
   );
 }
